@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="39" viewBox="0 0 31 39">
+  <g id="icon__files" transform="translate(-229 -697)">
+    <g id="paper2" transform="translate(7 -8)">
+      <path id="Path_2" data-name="Path 2" d="M2,1H16.156C17.121,1,23,7.369,23,7.369V29a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1V2A1,1,0,0,1,2,1Z" transform="translate(229 705)" fill="#fff" stroke="#9d9d9d" stroke-width="2"/>
+      <path id="Path_1" data-name="Path 1" d="M1,1C2.206,1,8,6.472,8,8H1Z" transform="translate(244 705)" fill="#9d9d9d" stroke="#9d9d9d" stroke-width="2"/>
+    </g>
+    <g id="paper1">
+      <path id="Path_2-2" data-name="Path 2" d="M2,1H16.156C17.121,1,23,7.369,23,7.369V29a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1V2A1,1,0,0,1,2,1Z" transform="translate(229 705)" fill="#fff" stroke="#9d9d9d" stroke-width="2"/>
+      <path id="Path_1-2" data-name="Path 1" d="M1,1C2.206,1,8,6.472,8,8H1Z" transform="translate(244 705)" fill="#9d9d9d" stroke="#9d9d9d" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

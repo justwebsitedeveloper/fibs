@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8.252" height="8.253" viewBox="0 0 8.252 8.253">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="8.253" height="8.253" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Component_2_184" data-name="Component 2 – 184" transform="translate(0)" clip-path="url(#clip-path)">
+    <ellipse id="Ellipse_56" data-name="Ellipse 56" cx="4.126" cy="4.126" rx="4.126" ry="4.126" fill="#f3f3f3"/>
+    <path id="play-button" d="M2.034,1.941.1.017A.05.05,0,0,0,.036.011.108.108,0,0,0,0,.1V3.945a.108.108,0,0,0,.036.085.051.051,0,0,0,.031.011A.054.054,0,0,0,.1,4.024L2.034,2.1a.123.123,0,0,0,0-.158Z" transform="translate(6.104 3.662) rotate(90)" fill="#616161"/>
+  </g>
+</svg>

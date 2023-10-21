@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FL Smidth</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="css/jquery.filer.css" rel="stylesheet" />
+    <link href="css/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./js/chosen/chosen.css">
+
+    <!-- jquery -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="./img/logo.svg" alt=""></a>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="#">Master</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a href="#">Domain</a></li>
+                                <li><a href="#">Acitivity Creation</a></li>
+                                <li><a href="#">Holiday List</a></li>
+                                <li><a href="#">Email Template</a></li>
+                                <li><a href="#">Approver Config</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Activity Entry Management</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a href="activity-open.html">Activity Open</a></li>
+                                <li><a href="#">Activity Entry</a></li>
+                                <li><a href="#">Approve</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Reports</a>
+                    <a class="nav-item nav-link active" href="#">User Setup</a>
+                    <div class="user-identity">
+                        <img src="./img/login.svg" alt="user-img">
+                        username
+                        <button class="logout">
+                            logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="user-setup">
+                <div class="user-setup-title">
+                    <h3>User Role Creation</h3>
+                    <hr>
+                </div>
+                <div class="user-setup-body">
+                    <div class="formDiv col-md-12 p-0">
+                        <form class="activityform" id="activity_form">
+                                <div class="col-md-12 p-0 d-flex align-items-center form-section">
+                                        <div class="col-md-4 pl-0">
+                                                <div class="form-group">
+                                                    <label>Role Name</label>
+                                                    <input type="text" class="form-control" id="role-name" name="role-name">
+                                                </div>
+                                            </div>    
+                                </div>
+                            <div class="col-md-12 p-0 d-flex align-items-center form-section">
+                                <div class="col-md-3 pl-0">
+                                    <div class="form-group">
+                                        <label>Master</label>
+                                        <select class="form-control multi-select" multiple name="master">
+                                                <option selected>Tag #1</option>
+                                                <option selected>Tag #2</option>
+                                                <option>Tag #3</option>
+                                                <option>Tag #4</option>
+                                                <option>Tag #5</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Activity Management</label>
+                                        <select class="form-control multi-select" multiple name="activity-management">
+                                                <option selected>Tag #1</option>
+                                                <option selected>Tag #2</option>
+                                                <option>Tag #3</option>
+                                                <option>Tag #4</option>
+                                                <option>Tag #5</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="form-group">
+                                        <label for="Role Name">Reports</label>
+                                        <select class="form-control multi-select" multiple name="reports">
+                                            <option selected>Tag #1</option>
+                                            <option selected>Tag #2</option>
+                                            <option >Tag #3</option>
+                                            <option>Tag #4</option>
+                                            <option>Tag #5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 pr-0">
+                                        <div class="form-group">
+                                            <label for="Role Name">User Setup</label>
+                                            <select class="form-control multi-select" multiple name="user-setup">
+                                                <option selected>Tag #1</option>
+                                                <option selected>Tag #2</option>
+                                                <option>Tag #3</option>
+                                                <option>Tag #4</option>
+                                                <option>Tag #5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="save_btn_sec">
+                                <button type="submit" class="role_save_btn">Save</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="activity-master">
+                <div class="activity-master-head">
+                    <div class="activity-master-head-left">
+                        <h4>User Role</h4>
+                        <input type="text" placeholder="search">
+                    </div>
+                    <button>Delete selected</button>
+                </div>
+
+                <table width="100%" class="activity-table">
+                    <tr>
+                        <th><input type="checkbox" class="table-select-all"></th>
+                        <th>Id</th>
+                        <th>Role Name</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>02</td>
+                        <td>Executive Director</td>
+                        <td>
+                            <button class="table-action edit-button" id="holiday_creation"><img src="./img/edit.svg"
+                                    alt=""></button>
+                            <button class="table-action delete-button"><img src="./img/delete.svg" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>02</td>
+                        <td>Chief Designer</td>
+                        <td>
+                            <button class="table-action edit-button" id="holiday_creation"><img src="./img/edit.svg"
+                                    alt=""></button>
+                            <button class="table-action delete-button"><img src="./img/delete.svg" alt=""></button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="activity-pagination pagination">
+                    <button><img src="./img/arrow-page.svg" class="rot-180"></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button><img src="./img/arrow-page.svg"></button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        Copyrights &copy; FLSmidth <span id="footerYear"></span>
+    </footer>
+    <script src="./js/bootstrap.min.js"></script>
+   
+    <script src="./js/chosen/chosen.jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

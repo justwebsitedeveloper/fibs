@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="css/jquery.filer.css" rel="stylesheet" />
+    <link href="css/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- jquery -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src='./js/jquery-ui-1.8.5.min.js'></script>
+    <script type="text/javascript" src="./js/jquery.filer.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="./img/logo.svg" alt=""></a>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link " href="#">Master</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a class="active" href="#">Domain</a></li>
+                                <li><a href="#">Acitivity Creation</a></li>
+                                <li><a href="#">Holiday List</a></li>
+                                <li><a href="#">Email Template</a></li>
+                                <li><a href="#">Approver Config</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link active" href="#">Activity Entry Management</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a href="activity-open.html">Activity Open</a></li>
+                                <li><a href="#">Activity Entry</a></li>
+                                <li><a href="#">Approve</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Reports</a>
+                    <a class="nav-item nav-link" href="#">User Setup</a>
+                    <div class="user-identity">
+                        <img src="./img/login.svg" alt="user-img">
+                        username
+                        <button class="logout">
+                            logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+
+        <div class="modal fade bd-example-modal-lg" id="work_day_modal_template" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered1">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <div class="modal-title col-md-12 p-0">
+                            <div class="work_day_template col-md-12 p-0 mb-2">Work day Update</div>
+
+
+                        </div>
+                        <button type="button" class="close modal_close_btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body p-0 ">
+                        <div class="col-md-12 work_date_modal">
+                            <form action="" id="work_date_form">
+                                <div class="col-md-12  d-flex align-items-center p-0">
+                                    <div class="col-md-10 pl-0">
+                                        <div class="form-group">
+                                            <label for="Work Date">Work Date
+                                            </label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_date"
+                                                    name="work_date">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button id="work_day_apply">Apply</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-12 work_date_dynamic p-0">
+                            <div class="col-md-12 dynamic_ht">
+                                <div class="col-md-12 p-0 d-flex">
+                                    <div class="col-md-6 pl-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day <b>+1</b></label>
+
+
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day<b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 p-0 d-flex">
+                                    <div class="col-md-6 pl-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day <b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day<b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 d-flex">
+                                    <div class="col-md-6 pl-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day <b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day<b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 d-flex">
+                                    <div class="col-md-6 pl-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day <b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day<b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 d-flex">
+                                    <div class="col-md-6 pl-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day <b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-0">
+                                        <div class="form-group">
+                                            <label for="work_day">Work Day<b>+1</b></label>
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control date-picker" id="work_day"
+                                                    name="work_day[]">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><span
+                                                            class="glyphicon glyphicon-calendar">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 save-btn-sec text-center">
+                                <button class="work_date_save_btn" id="save_btn">Save</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="modal fade bd-example-modal-lg" id="jv_template" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered1">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <div class="modal-title col-md-12 p-0">
+                            <div class="jv_template col-md-12 p-0">JV Template</div>
+                            <div class="col-md-12 align-items-center p-0 d-flex justify-content-between mb-2">
+                                <div class="doc_title">Document Details <span class="doc_info">*Update details only in
+                                        Yellow colored fields</span></div>
+                                <button id="submit_btn" class="submit_btn">Submit</button>
+                            </div>
+
+                        </div>
+                        <button type="button" class="close modal_close_btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12 p-0">
+                            <form action="post" id="document_form" class="document_form">
+                                <div class="col-md-12  d-flex align-items-center form_div">
+                                    <div class="col-md-3 pl-0">
+                                        <div class="form-group">
+                                            <label for="bill_entity">Bill Entity</label>
+                                            <input type="text" class="form-control disabled_field" id="bill_entity"
+                                                name="bill_entity">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mt-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input radio_button" type="radio" name="project"
+                                                id="project" value="project">
+                                            <label class="form-check-label" for="project">
+                                                Project Related
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mt-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input radio_button" type="radio" name="non-project"
+                                                id="non-project" value="non-project">
+                                            <label class="form-check-label" for="non-project">
+                                                Non-Project Related
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0">
+                                    <div class="act-master-div jv_accordion_div">
+                                        <h3 class="other_details_title accordion_closed" id="other_details"
+                                            onclick="accordion_form('other_details')">Other Details
+                                            <div class="accordion-icon"><img class="arrow-img arrow-down"
+                                                    src="./img/arrow.png"></div>
+                                        </h3>
+                                    </div>
+                                    <div class="accordion_body other_details_body">
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Balance Type">Balance Type <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field"
+                                                        id="balance_type" name="balance_type">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Period">Period <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="period"
+                                                        name="period">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex align-items-center">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Database">Database <sup>*</sup></label>
+                                                    <input type="text" class="form-control update_field" id="database"
+                                                        name="database">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Batch Name">Batch Name <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field"
+                                                        id="batch_name" name="batch_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-5 ">
+                                                <div class="form-group">
+                                                    <label for="batch_name_text"></label>
+                                                    <input type="text" class="form-control disabled_field"
+                                                        id="batch_name_text" name="batch_name_text">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex align-items-center">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Data Access Set">Data Access Set <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field"
+                                                        id="data_access_set" name="data_access_set">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Batch Name">Reverse Journal <sup>*</sup></label>
+                                                    <select class="form-control custom-dropdown disabled_field"
+                                                        id="reverse_journal" name="reverse_journal">
+
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 ">
+                                                <div class="form-group">
+                                                    <label for="Reversal Period / Date">Reversal Period / Date
+                                                        <sup>*</sup></label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" id="reversal_date"
+                                                            name="reversal_date">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Ledger">Ledger <sup>*</sup></label>
+                                                    <input type="text" class="form-control update_field" id="ledger"
+                                                        name="ledger">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Journal Type">Journal Type <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field"
+                                                        id="journal_type" name="journal_type">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Category">Category <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="category"
+                                                        name="category">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Journal Name">Journal Name <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field"
+                                                        id="journal_name" name="journal_name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex mb-3">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Source">Source <sup>*</sup></label>
+                                                    <select class="form-control disabled_field custom-dropdown"
+                                                        id="source" name="source">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Journal Decription">Journal Decription
+                                                        <sup>*</sup></label>
+                                                    <input type="text" class="form-control update_field"
+                                                        id="journal_desc" name="journal_desc">
+
+                                                    <div class="form-check mt-2">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="update_line" value="0" id="update_line">
+                                                        <label class="form-check-label" for="update_line">Update Line
+                                                            DFF same as Journal Description</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Current">Current <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="current"
+                                                        name="current">
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div class="col-md-12 pl-0">
+                                                    <div class="">
+                                                        <label for="Company">Company <sup>*</sup>
+                                                            <span class="upload_btn upload_trigger" id="upload_btn">
+                                                                <img src="./img/upload-button.svg"> Browse</span>
+                                                        </label>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 pl-0">
+                                                    <div class="file_input" data-jfiler-name="files" id="upload_btn">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+
+
+                                                <div class="form-group">
+                                                    <label for="Accounting Date">Accounting Date <sup>*</sup></label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" id="accounting_date"
+                                                            name="accounting_date">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <section class="other_details_grid">
+                            <div class="activity-master-head">
+                                <div class="activity-master-head-left">
+                                    <h4 class="heading">Amount in Local CCY</h4>
+                                </div>
+                                <div class="btn_sec">
+                                    <button id="add_transaction_line">Add Transaction Lines</button>
+                                    <button id="delete_selected">Delete selected</button>
+                                </div>
+
+                            </div>
+
+                            <table width="100%" class="activity-table other_details_table">
+                                <tr>
+                                    <th><input type="checkbox" class="table-select-all"></th>
+                                    <th>Company</th>
+                                    <th>Cost Center</th>
+                                    <th>Main A/C</th>
+                                    <th>Sub Main</th>
+                                    <th>Counterpart</th>
+                                    <th>Amount</th>
+                                    <th>Trans Type</th>
+                                    <th>Line Desc</th>
+                                    <th>Line DFF</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="table-select"></td>
+                                    <td><input type="text" class="form-control company_field" id="table_text_company"
+                                            name="table_text_company" value="923"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_cost_center"
+                                            name="table_text_cost_center" value="00000"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_main_ac"
+                                            name="table_text_mani_ac" value="3801"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_sub_main"
+                                            name="table_text_sub_main" value="103"></td>
+                                    <td><input type="text" class="form-control update_field"
+                                            id="table_text_counter_part" name="table_text_counter_part" value="103">
+                                    </td>
+                                    <td><input type="text" class="form-control disabled_field" id="table_text_amount"
+                                            name="table_text_amount" value="103"></td>
+                                    <td>
+                                        <select class="form-control custom-dropdown update_field">
+                                            <option value="credit" selected>Credit</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_desc"
+                                            name="table_text_line_desc" value="SIVSH-IN"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_dff"
+                                            name="table_text_line_dff" value="103"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="table-select"></td>
+                                    <td><input type="text" class="form-control company_field" id="table_text_company"
+                                            name="table_text_company" value="923"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_cost_center"
+                                            name="table_text_cost_center" value="00000"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_main_ac"
+                                            name="table_text_mani_ac" value="3801"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_sub_main"
+                                            name="table_text_sub_main" value="103"></td>
+                                    <td><input type="text" class="form-control update_field"
+                                            id="table_text_counter_part" name="table_text_counter_part" value="103">
+                                    </td>
+                                    <td><input type="text" class="form-control disabled_field" id="table_text_amount"
+                                            name="table_text_amount" value="103"></td>
+                                    <td>
+                                        <select class="form-control custom-dropdown">
+                                            <option value="credit" selected>Credit</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_desc"
+                                            name="table_text_line_desc" value="SIVSH-IN"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_dff"
+                                            name="table_text_line_dff" value="103"></td>
+                                </tr>
+                            </table>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-12 p-0 top_section">
+                <div class="col-md-12 heading_section">
+                    <div class="col-md-12 p-0">
+                        <div class="col-md-12 brd_sec d-flex align-items-center">
+                            <div class="col-md-6 p-0">
+                                <div class="activity_head">Activity Open</div>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end p-0">
+                                <button class="top_btn mr-3" id="create_activity"> Create New Activity</button>
+                                <button class="top_btn" id="work_day_update">Work day Update</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12  d-flex align-items-center">
+                            <div class="col-md-2 pl-0">
+                                <div class="form-group">
+                                    <label for="Entity">Entity</label>
+                                    <select class="form-control  custom-dropdown" id="Entity" name="Entity">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 pl-0">
+                                <div class="form-group">
+                                    <label for="Domain">Domain</label>
+                                    <select class="form-control  custom-dropdown" id="domain" name="domain">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 pl-0">
+                                <div class="form-group">
+                                    <label for="Period">Period</label>
+                                    <select class="form-control  custom-dropdown" id="period" name="period">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <section class="main-acc-section">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="accordion-section col-md-12 p-0">
+                            <div class="act-master-div">
+                                <h3 class="act-master-title accordion_closed" onclick="accordion_form('advance_search')"
+                                    id="advance_search">Advance Search <div class="accordion-icon"><img
+                                            class="arrow-img arrow-down" src="./img/arrow.png"></div>
+                                </h3>
+                            </div>
+                            <div class="accordion_body advance_search_body">
+                                <div class="formDiv col-md-12 p-0">
+                                    <form class="advance_search_form" id="adavnce_search_form">
+                                        <div class="col-md-12 d-flex p-0">
+                                            <div class="col-md-4 p-0">
+                                                <div class="col-md-12 p-0">
+                                                    <div class="col-md-7 pl-0">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="delegate" value="0" id="delegate">
+                                                            <label class="form-check-label" for="delegate">Delegate to
+                                                                another user</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 d-flex p-0 opacity4" id="delegate_user_div">
+                                                    <div class="col-md-7 pl-0">
+                                                        <input type="text" class="form-control delegate_disabled"
+                                                            id="delegate_text" name="delegate_text" value="">
+
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <button class="search_apply_btn delegate_disabled"
+                                                            id="search_apply_btn">Apply</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 d-flex p-0">
+                                                <div class="col-md-2 pl-0">
+                                                    <div class="form-group">
+                                                        <label for="Recurrence Type">Recurrence Type</label>
+                                                        <select class="form-control  custom-dropdown"
+                                                            id="recurrence_type" name="recurrence_type">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pl-0">
+                                                    <div class="form-group">
+                                                        <label for="Activity Type">Activity Type</label>
+                                                        <select class="form-control  custom-dropdown" id="activity_type"
+                                                            name="activity_type">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pl-0">
+                                                    <div class="form-group">
+                                                        <label for="Activity Status">Activity Status</label>
+                                                        <select class="form-control  custom-dropdown"
+                                                            id="activity_status" name="activity_status">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pl-0">
+                                                    <div class="form-group">
+                                                        <label for="Active Flag">Active Flag</label>
+                                                        <select class="form-control custom-dropdown" id="active_flag"
+                                                            name="active_flag">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 pl-0">
+                                                    <div class="form-group">
+                                                        <label for="Contact Name">Contact Name</label>
+                                                        <input type="text" class="form-control" id="contact_name"
+                                                            name="contact_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="save_btn_sec">
+                                            <button id="form_apply_btn" class="form_apply_btn">Apply</button>
+                                            <button type="reset" id="form_clear_btn"
+                                                class="form_clear_btn">Clear</button>
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="activity-master activity_open_grid">
+                <div class="activity-master-head">
+                    <div class="activity-master-head-left">
+                        <input class="m-0" type="text" placeholder="search">
+                    </div>
+                    <button>Delete selected</button>
+                </div>
+
+                <table width="100%" class="activity-table">
+                    <tr>
+                        <th><input type="checkbox" class="table-select-all"></th>
+                        <th>Domain</th>
+                        <th>Activity</th>
+                        <th>Target Date</th>
+                        <th>Primary Contact</th>
+                        <th>Secondary Contact</th>
+                        <th>SOP Ref</th>
+                        <th>Template</th>
+                        <th>Actual Date</th>
+                        <th>Status</th>
+
+                    </tr>
+                    <tr class="tr_red_background">
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>AP</td>
+                        <td>Accrual</td>
+                        <td>Workday+1</td>
+                        <td>SIVSH-IN</td>
+                        <td>SIVSH-IN</td>
+                        <td>
+                            <div class="email_tag sta_red"><img src="./img/email.svg">Email</div>
+                        </td>
+                        <td>
+                            <div class="template_tag sta_red_brd">TE5-2019</div>
+                        </td>
+                        <td>11-03-2019</td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending" selected>Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="tr_green_background">
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>AP</td>
+                        <td>Accrual</td>
+                        <td>Workday+1</td>
+                        <td>SIVSH-IN</td>
+                        <td>SIVSH-IN</td>
+                        <td>
+                            <div class="email_tag sta_green"><img src="./img/email.svg">Email</div>
+                        </td>
+                        <td>
+                            <div class="template_tag sta_green_brd">TE5-2019</div>
+                        </td>
+                        <td>11-03-2019</td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending" selected>Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="activity-pagination d-flex align-items-center ">
+                    <div class="col-md-6 pl-0 d-flex justify-content-start">
+                        <button class="bottom_btn open" id="open_btn">Open</button>
+                        <button class="bottom_btn close_btn" id="close_btn">Close</button>
+                        <button class="bottom_btn reopen" id="reopen_btn">Reopen</button>
+                    </div>
+                    <div class="col-md-6 pl-0 d-flex justify-content-end pagination">
+                        <button><img src="./img/arrow-page.svg" class="rot-180"></button>
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button><img src="./img/arrow-page.svg"></button>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        Copyrights &copy; FLSmidth <span id="footerYear"></span>
+    </footer>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/moment.min.js"></script>
+    <script src="./js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/accordion-form.js"></script>
+    <script src="./js/activity-master.js"></script>
+</body>
+
+</html>

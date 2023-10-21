@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Holiday Master</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Scripts -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="./img/logo.svg" alt=""></a>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Master</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a class="active" href="#">Domain</a></li>
+                                <li><a href="#">Acitivity Creation</a></li>
+                                <li><a href="#">Holiday List</a></li>
+                                <li><a href="#">Email Template</a></li>
+                                <li><a href="#">Approver Config</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Activity Entry Management</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a href="#">Acitivity Creation</a></li>
+                                <li><a href="#">Holiday List</a></li>
+                                <li><a href="#">Email Template</a></li>
+                                <li><a href="#">Approver Config</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Reports</a>
+                    <a class="nav-item nav-link" href="#">User Setup</a>
+                    <div class="user-identity">
+                        <img src="./img/login.svg" alt="user-img">
+                        username
+                        <button class="logout">
+                            logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="container">
+            <section class="main-acc-section">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="accordion-section col-md-12 p-0">
+                            <div class="act-master-div">
+                                <h3 class="act-master-title accordion_closed" onclick="accordion_form('holiday_creation')" id="holiday_creation">Holiday Creation
+                                    Master <div class="accordion-icon"><img class="arrow-img arrow-down"
+                                            src="./img/arrow.png"></div>
+                                </h3>
+                            </div>
+                            <div class="accordion_body holiday_creation_body">
+                                <div class="formDiv col-md-12 p-0">
+                                    <form class="activityform" id="activity_form">
+                                        <div class="col-md-12 p-0 d-flex align-items-center form-section">
+                                            <div class="col-md-3 pl-0">
+                                                <div class="form-group">
+                                                    <label for="entity">Holiday Date</label>
+                                                    <div class="input-group mb-3">
+
+                                                        <input type="text" class="form-control holiday-date"
+                                                            id="holiday-date" name="holiday-date" placeholder="Date">
+
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="date-addon"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="Activity Type">Year</label>
+                                                    <input type="number" class="form-control" placeholder="year" name="Description">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pr-0">
+                                                <div class="form-group">
+                                                    <label for="Activity Type">Description</label>
+                                                    <input type="text" class="form-control" name="Description">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="save_btn_sec">
+                                            <button type="submit" class="save_btn">Save & Create Template</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="activity-master">
+                <div class="activity-master-head">
+                    <div class="activity-master-head-left">
+                        <h4>Holiday Master</h4>
+                        <input type="text" placeholder="search">
+                    </div>
+                    <button>Delete selected</button>
+                </div>
+
+                <table width="100%" class="activity-table">
+                    <tr>
+                        <th><input type="checkbox" class="table-select-all"></th>
+                        <th>S.No</th>
+                        <th>Holiday Date</th>
+                        <th>Year</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Approval Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>01</td>
+                        <td>01/01/2019</td>
+                        <td>2019</td>
+                        <td>New Year</td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved" selected>Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="table-action edit-button" id="holiday_creation"><img src="./img/edit.svg" alt=""></button>
+                            <button class="table-action delete-button"><img src="./img/delete.svg" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>01</td>
+                        <td>01/01/2019</td>
+                        <td>2019</td>
+                        <td>New Year</td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="table-action edit-button" id="holiday_creation"><img src="./img/edit.svg" alt=""></button>
+                            <button class="table-action delete-button"><img src="./img/delete.svg" alt=""></button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="activity-pagination pagination">
+                    <button><img src="./img/arrow-page.svg" class="rot-180"></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button><img src="./img/arrow-page.svg"></button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        Copyrights &copy; FLSmidth <span id="footerYear"></span>
+    </footer>
+
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/moment.min.js"></script>
+    <script src="./js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/accordion-form.js"></script>
+    <script src="./js/holiday-master.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.067" height="12.737" viewBox="0 0 10.067 12.737">
+  <g id="rubbish-bin" transform="translate(-81.133)">
+    <g id="Group_94" data-name="Group 94" transform="translate(81.133)">
+      <path id="Path_431" data-name="Path 431" d="M90.332,1.5h-1.7V.395A.4.4,0,0,0,88.23,0a.06.06,0,0,0-.043.014A.055.055,0,0,0,88.158,0H84.1a.389.389,0,0,0-.395.395V1.5H82a.858.858,0,0,0-.868.868V3.789h.753v8.087a.846.846,0,0,0,.861.861h6.838a.852.852,0,0,0,.868-.861V3.789H91.2V2.368A.858.858,0,0,0,90.332,1.5ZM84.5.789h3.337V1.5H84.5Zm5.159,11.086c0,.05-.022.072-.072.072H82.748c-.05,0-.072-.021-.072-.072V3.789h6.982ZM90.4,3H81.929V2.368c0-.05.022-.079.072-.079h8.331c.05,0,.072.029.072.079Z" transform="translate(-81.133)" fill="#e85555"/>
+      <rect id="Rectangle_16943" data-name="Rectangle 16943" width="0.796" height="6.53" transform="translate(6.48 4.714)" fill="#e85555"/>
+      <rect id="Rectangle_16944" data-name="Rectangle 16944" width="0.796" height="6.53" transform="translate(4.643 4.714)" fill="#e85555"/>
+      <rect id="Rectangle_16945" data-name="Rectangle 16945" width="0.796" height="6.53" transform="translate(2.806 4.714)" fill="#e85555"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="css/jquery.filer.css" rel="stylesheet" />
+    <link href="css/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- jquery -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src='./js/jquery-ui-1.8.5.min.js'></script>
+    <script type="text/javascript" src="./js/jquery.filer.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="./img/logo.svg" alt=""></a>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Master</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a class="active" href="#">Domain</a></li>
+                                <li><a href="#">Acitivity Creation</a></li>
+                                <li><a href="#">Holiday List</a></li>
+                                <li><a href="#">Email Template</a></li>
+                                <li><a href="#">Approver Config</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Activity Entry Management</a>
+                    <div class="sub-nav">
+                        <div class="container">
+                            <ul>
+                                <li><a href="activity-open.html">Activity Open</a></li>
+                                <li><a href="#">Activity Entry</a></li>
+                                <li><a href="#">Approve</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="nav-item nav-link" href="#">Reports</a>
+                    <a class="nav-item nav-link" href="#">User Setup</a>
+                    <div class="user-identity">
+                        <img src="./img/login.svg" alt="user-img"> username
+                        <button class="logout">
+                            logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="modal fade bd-example-modal-lg" id="jv_template" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered1">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <div class="modal-title col-md-12 p-0">
+                            <div class="jv_template col-md-12 p-0">JV Template</div>
+                            <div class="col-md-12 align-items-center p-0 d-flex justify-content-between mb-2">
+                                <div class="doc_title">Document Details <span class="doc_info">*Update details only in
+                                        Yellow colored fields</span></div>
+                                <button id="submit_btn" class="submit_btn">Submit</button>
+                            </div>
+
+                        </div>
+                        <button type="button" class="close modal_close_btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12 p-0">
+                            <form action="post" id="document_form" class="document_form">
+                                <div class="col-md-12  d-flex align-items-center form_div">
+                                    <div class="col-md-3 pl-0">
+                                        <div class="form-group">
+                                            <label for="bill_entity">Bill Entity</label>
+                                            <input type="text" class="form-control disabled_field" id="bill_entity" name="bill_entity">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mt-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input radio_button" type="radio" name="project" id="project" value="project">
+                                            <label class="form-check-label" for="project">
+                                                Project Related
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mt-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input radio_button" type="radio" name="non-project" id="non-project" value="non-project">
+                                            <label class="form-check-label" for="non-project">
+                                                Non-Project Related
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0">
+                                    <div class="act-master-div jv_accordion_div">
+                                        <h3 class="other_details_title accordion_closed" id="other_details" onclick="accordion_form('other_details')">Other Details
+                                            <div class="accordion-icon"><img class="arrow-img arrow-down" src="./img/arrow.png"></div>
+                                        </h3>
+                                    </div>
+                                    <div class="accordion_body other_details_body">
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Balance Type">Balance Type <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="balance_type" name="balance_type">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Period">Period <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="period" name="period">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex align-items-center">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Database">Database <sup>*</sup></label>
+                                                    <input type="text" class="form-control update_field" id="database" name="database">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Batch Name">Batch Name <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="batch_name" name="batch_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-5 ">
+                                                <div class="form-group">
+                                                    <label for="batch_name_text"></label>
+                                                    <input type="text" class="form-control disabled_field" id="batch_name_text" name="batch_name_text">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex align-items-center">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Data Access Set">Data Access Set <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="data_access_set" name="data_access_set">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Batch Name">Reverse Journal <sup>*</sup></label>
+                                                    <select class="form-control custom-dropdown disabled_field" id="reverse_journal" name="reverse_journal">
+
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 ">
+                                                <div class="form-group">
+                                                    <label for="Reversal Period / Date">Reversal Period / Date
+                                                        <sup>*</sup></label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" id="reversal_date" name="reversal_date">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Ledger">Ledger <sup>*</sup></label>
+                                                    <input type="text" class="form-control update_field" id="ledger" name="ledger">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Journal Type">Journal Type <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="journal_type" name="journal_type">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Category">Category <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="category" name="category">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Journal Name">Journal Name <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="journal_name" name="journal_name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex mb-3">
+                                            <div class="col-md-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Source">Source <sup>*</sup></label>
+                                                    <select class="form-control disabled_field custom-dropdown" id="source" name="source">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <div class="form-group">
+                                                    <label for="Journal Decription">Journal Decription
+                                                        <sup>*</sup></label>
+                                                    <input type="text" class="form-control update_field" id="journal_desc" name="journal_desc">
+
+                                                    <div class="form-check mt-2">
+                                                        <input class="form-check-input" type="checkbox" name="update_line" value="0" id="update_line">
+                                                        <label class="form-check-label" for="update_line">Update Line
+                                                            DFF same as Journal Description</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-5 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Current">Current <sup>*</sup></label>
+                                                    <input type="text" class="form-control disabled_field" id="current" name="current">
+                                                </div>
+                                            </div>
+                                            <!--New design Update start-->
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="Company">Company <sup>*</sup></label>
+                                                    <div style="display:none;">
+                                                        <input type="file" multiple name="company_file[]" id="company_file" class="imgupload" />
+                                                    </div>
+                                                    <div class="upload_section" id="company_file_input">
+                                                        <div class="text-center">
+                                                            <img src="./img/files-upload.png">
+                                                        </div>
+                                                        <p class="drag_text">Drag files Here</p>
+                                                        <p class="browse">or <a href="javascript:void(0)">browse your
+                                                                computer</a> </p>
+                                                    </div>
+                                                    <div class="jFiler-item" id="company_file_name_update">
+                                                        <div class="jFiler-item-container">
+                                                            <div class="jFiler-item-inner">
+                                                                <div class="jFiler-item-thumb">
+                                                                    <div class="jFiler-item-status"></div>
+                                                                    <div class="jFiler-item-info">
+                                                                        <span class="jFiler-item-title" id="company_file_name"> File_name</span>
+                                                                        <span style="float: right;"><a class="icon-jfi-trash jFiler-item-trash-action" id="company_remove_file"></a></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--New design Update end-->
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex">
+                                            <div class="col-md-5 pl-0">
+
+
+                                                <div class="form-group">
+                                                    <label for="Accounting Date">Accounting Date <sup>*</sup></label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" id="accounting_date" name="accounting_date">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <section class="other_details_grid">
+                            <div class="activity-master-head">
+                                <div class="activity-master-head-left">
+                                    <h4 class="heading">Amount in Local CCY</h4>
+                                </div>
+                                <div class="btn_sec">
+                                    <button id="add_transaction_line">Add Transaction Lines</button>
+                                    <button id="delete_selected">Delete selected</button>
+                                </div>
+
+                            </div>
+
+                            <table width="100%" class="activity-table other_details_table">
+                                <tr>
+                                    <th><input type="checkbox" class="table-select-all"></th>
+                                    <th>Company</th>
+                                    <th>Cost Center</th>
+                                    <th>Main A/C</th>
+                                    <th>Sub Main</th>
+                                    <th>Counterpart</th>
+                                    <th>Amount</th>
+                                    <th>Trans Type</th>
+                                    <th>Line Desc</th>
+                                    <th>Line DFF</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="table-select"></td>
+                                    <td><input type="text" class="form-control company_field" id="table_text_company" name="table_text_company" value="923"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_cost_center" name="table_text_cost_center" value="00000"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_main_ac" name="table_text_mani_ac" value="3801"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_sub_main" name="table_text_sub_main" value="103"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_counter_part" name="table_text_counter_part" value="103">
+                                    </td>
+                                    <td><input type="text" class="form-control disabled_field" id="table_text_amount" name="table_text_amount" value="103"></td>
+                                    <td>
+                                        <select class="form-control custom-dropdown update_field">
+                                            <option value="credit" selected>Credit</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_desc" name="table_text_line_desc" value="SIVSH-IN"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_dff" name="table_text_line_dff" value="103"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="table-select"></td>
+                                    <td><input type="text" class="form-control company_field" id="table_text_company" name="table_text_company" value="923"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_cost_center" name="table_text_cost_center" value="00000"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_main_ac" name="table_text_mani_ac" value="3801"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_sub_main" name="table_text_sub_main" value="103"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_counter_part" name="table_text_counter_part" value="103">
+                                    </td>
+                                    <td><input type="text" class="form-control disabled_field" id="table_text_amount" name="table_text_amount" value="103"></td>
+                                    <td>
+                                        <select class="form-control custom-dropdown">
+                                            <option value="credit" selected>Credit</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_desc" name="table_text_line_desc" value="SIVSH-IN"></td>
+                                    <td><input type="text" class="form-control update_field" id="table_text_line_dff" name="table_text_line_dff" value="103"></td>
+                                </tr>
+                            </table>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <section class="main-acc-section">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="accordion-section col-md-12 p-0">
+                            <div class="act-master-div">
+                                <h3 class="act-master-title accordion_closed" onclick="accordion_form('activity_creation')" id="activity_creation">Activity Creation Master
+                                    <div class="accordion-icon"><img class="arrow-img arrow-down" src="./img/arrow.png"></div>
+                                </h3>
+                            </div>
+                            <div class="accordion_body activity_creation_body">
+                                <div class="formDiv col-md-12 p-0">
+                                    <form class="activityform" id="activity_form" method="post">
+                                        <div class="col-md-12 p-0 d-flex align-items-center form-section">
+                                            <div class="col-md-4 pl-0">
+                                                <div class="form-group">
+                                                    <label for="entity">Entity</label>
+                                                    <select class="form-control custom-dropdown" id="entity" name="entity">
+
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="Domain">Domain</label>
+                                                    <select class="form-control custom-dropdown" id="domain" name="domain">
+
+
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Activity Type">Activity Type</label>
+                                                    <select class="form-control custom-dropdown" name="activity_type" id="activity_type">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="inactive" value="0" id="inactive">
+                                                    <label class="form-check-label" for="inactive">inactive</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 p-0 d-flex form-section">
+                                            <div class="col-md-4 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Activity Name">Activity Name</label>
+                                                    <input type="text" class="form-control" id="activity_name" name="activity_name">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="Primary  contact">Primary contact</label>
+                                                    <input type="text" class="form-control" id="primary_contact" name="primary_contact">
+                                                </div>
+                                            </div>
+                                            <!-- New design Update start -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="SOP Reference">SOP Reference </label>
+                                                    <div style="display:none;">
+                                                        <input type="file" multiple name="sop_file[]" id="sop_file" class="imgupload" />
+                                                    </div>
+                                                    <div class="upload_section" id="sop_file_input">
+                                                        <div class="text-center">
+                                                            <img src="./img/files-upload.png">
+                                                        </div>
+                                                        <p class="drag_text">Drag files Here</p>
+                                                        <p class="browse">or <a href="javascript:void(0)">browse your
+                                                                computer</a> </p>
+                                                    </div>
+                                                    <div class="jFiler-item" id="sop_file_name_update">
+                                                        <div class="jFiler-item-container">
+                                                            <div class="jFiler-item-inner">
+                                                                <div class="jFiler-item-thumb">
+                                                                    <div class="jFiler-item-status"></div>
+                                                                    <div class="jFiler-item-info">
+                                                                        <span class="jFiler-item-title" id="sop_file_name"> File_name</span>
+                                                                        <span style="float: right;"><a class="icon-jfi-trash jFiler-item-trash-action" id="sop_remove_file"></a></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- New design Update end -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="Comments">Comments</label>
+                                                    <textarea rows="5" class="form-control" id="comments" name="comments"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 d-flex p-0 align-items-center form-section">
+                                            <div class="col-md-4 pl-0">
+                                                <div class="form-group">
+                                                    <label for="Secondary contact">Secondary contact</label>
+                                                    <input type="text" class="form-control" id="secondary_contact" name="secondary_contact">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="Range of Recurrence">Range of Recurrence</label>
+                                                    <div class="input-group mb-3">
+
+                                                        <input type="text" class="form-control  start-date" id="range_of_recurrence" name="range_of_recurrence" placeholder="Start Date">
+
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="End Date"></label>
+
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control end-date" id="end_date" name="end_date" placeholder="End Date">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2"><span
+                                                                    class="glyphicon glyphicon-calendar">
+                                                                </span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 pl-0">
+                                            <fieldset>
+                                                <legend class="col-md-4 p-0 d-flex">
+                                                    <div class="col-md-12 d-flex pl-0 align-items-center">
+                                                        <div class="legend_text">Recurrence</div>
+                                                        <select class="form-control custom-dropdown" name="recurrence" id="recurrence">
+                                                            <option value="daily">Daily</option>
+                                                            <option value="weekly">Weekly</option>
+                                                            <option value="monthly">Monthly</option>
+                                                            <option value="yearly">Yearly</option>
+                                                        </select>
+                                                    </div>
+                                                </legend>
+                                                <div class="col-md-12 d-flex p-0">
+                                                    <div class="dropdown_section col-md-12 p-0 d-flex align-items-center" id="daily_dropdown">
+                                                        <div class="col-3 pl-0">
+                                                            <div class="form-group">
+                                                                <label for="Work Day">Workday</label>
+                                                                <select class="form-control custom-dropdown" name="work_day" id="work_day">
+                                                                    <option value="every">Every</option>
+                                                                    <option value="every_weekday">Every weekday</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="Work Day Text"></label>
+                                                                <input type="text" class="form-control" id="work_day_text" name="work_day_text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1" id="days_text_div">
+                                                            <label for="Work Day">day(s)</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown_section notdisplay col-md-12 p-0" id="weekly_dropdown">
+                                                        <div class="row col-md-12">
+                                                            <div class="col-md-12 d-flex align-items-center p-0">
+                                                                <div class="widauto">
+
+                                                                    <label for="Work Day">Recur Every</label>
+
+                                                                </div>
+                                                                <div class="col-1">
+                                                                    <div class="form-group">
+                                                                        <label for="Work Day Text"></label>
+                                                                        <input type="text" class="form-control" id="work_day_text" name="work_day_text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2 pl-0" id="days_text_div">
+                                                                    <label for="Work Day">week(s) on:</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 d-flex p-0">
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="sunday" value="1">
+                                                                    <label class="form-check-label" for="sunday">Sunday</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="monday" value="2">
+                                                                    <label class="form-check-label" for="monday">Monday</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="tuesday" value="3">
+                                                                    <label class="form-check-label" for="tuesday">Tuesday</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="wednesday" value="4">
+                                                                    <label class="form-check-label" for="wednesday">Wednesday</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="thursday" value="5">
+                                                                    <label class="form-check-label" for="thursday">Thursday</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="friday" value="6">
+                                                                    <label class="form-check-label" for="friday">Friday</label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="checkbox" id="saturday" value="7">
+                                                                    <label class="form-check-label" for="saturday">Saturday</label>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="dropdown_section notdisplay col-md-12 p-0 align-items-center" id="monthly_dropdown">
+                                                        <div class="col-3 pl-0">
+                                                            <div class="form-group">
+                                                                <label for="Work Day">Workday</label>
+                                                                <select class="form-control custom-dropdown" name="work_day" id="work_day">
+                                                                    <option value="every">Every</option>
+                                                                    <option value="every_weekday">Every month</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="Work Day Text"></label>
+                                                                <input type="text" class="form-control" id="work_day_text" name="work_day_text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1" id="days_text_div">
+                                                            <label for="Work Day">month(s)</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown_section notdisplay col-md-12 p-0" id="yearly_dropdown">
+                                                        <div class="row col-md-12">
+                                                            <div class="col-md-12 d-flex align-items-center p-0">
+                                                                <div class="widauto">
+
+                                                                    <label for="Work Day">Recur Every</label>
+
+                                                                </div>
+                                                                <div class="col-1">
+                                                                    <div class="form-group">
+                                                                        <label for="Work Day Text"></label>
+                                                                        <input type="text" class="form-control" id="work_day_text" name="work_day_text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2 pl-0" id="days_text_div">
+                                                                    <label for="Work Day">year(s) on:</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 d-flex p-0 align-items-center">
+                                                                <div class="col-md-3 p-0">
+                                                                    <div class="">
+
+                                                                        <select class="form-control custom-dropdown" name="months" id="months">
+                                                                            <option value='1'>Janaury</option>
+                                                                            <option value='2'>February</option>
+                                                                            <option value='3'>March</option>
+                                                                            <option value='4'>April</option>
+                                                                            <option value='5'>May</option>
+                                                                            <option value='6'>June</option>
+                                                                            <option value='7'>July</option>
+                                                                            <option value='8'>August</option>
+                                                                            <option value='9'>September</option>
+                                                                            <option value='10'>October</option>
+                                                                            <option value='11'>November</option>
+                                                                            <option value='12'>December</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="">
+
+                                                                        <input type="text" class="form-control" id="month_date" name="month_date">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="save_btn_sec">
+                                            <button id="save_btn" class="save_btn">Save & Create Template</button>
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="activity-master">
+                <div class="activity-master-head">
+                    <div class="activity-master-head-left">
+                        <h4>Activity Master</h4>
+                        <input type="text" placeholder="search">
+                    </div>
+                    <button>Delete selected</button>
+                </div>
+
+                <table width="100%" class="activity-table">
+                    <tr>
+                        <th><input type="checkbox" class="table-select-all"></th>
+                        <th>S.No</th>
+                        <th>Enitiy</th>
+                        <th>Domain</th>
+                        <th>Activity Name</th>
+                        <th>Primary Contact</th>
+                        <th>Secondary</th>
+                        <th>Reccurance</th>
+                        <th>Status</th>
+                        <th>Approval Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>01</td>
+                        <td>236</td>
+                        <td>AHH</td>
+                        <td>SIVSH-IN</td>
+                        <td>SIVSH-IN</td>
+                        <td>SENJH-IN</td>
+                        <td>SENJH-IN</td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved" selected>Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="table-action edit-button" id="activity_creation"><img src="./img/edit.svg" alt=""></button>
+                            <button class="table-action delete-button"><img src="./img/delete.svg" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="table-select"></td>
+                        <td>01</td>
+                        <td>236</td>
+                        <td>AHH</td>
+                        <td>SIVSH-IN</td>
+                        <td>SIVSH-IN</td>
+                        <td>SENJH-IN</td>
+                        <td>SENJH-IN</td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="table-custom-select">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="table-action edit-button" id="activity_creation"><img src="./img/edit.svg" alt=""></button>
+                            <button class="table-action delete-button"><img src="./img/delete.svg" alt=""></button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="activity-pagination pagination">
+                    <button><img src="./img/arrow-page.svg" class="rot-180"></button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button><img src="./img/arrow-page.svg"></button>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+    <footer>
+        Copyrights &copy; FLSmidth <span id="footerYear"></span>
+    </footer>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/moment.min.js"></script>
+    <script src="./js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/accordion-form.js"></script>
+    <script src="./js/activity-master.js"></script>
+</body>
+
+</html>
